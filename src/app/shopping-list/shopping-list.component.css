@@ -1,0 +1,96 @@
+.shopping-list-container {
+  max-width: 600px; /* Define a largura máxima do contêiner */
+  margin: 0 auto; /* Centraliza o contêiner */
+  padding: 20px; /* Espaçamento interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  background-color: #fff; /* Cor de fundo do contêiner */
+}
+
+h1 {
+  text-align: center; /* Centraliza o título */
+  font-size: 2.5em; /* Aumenta o tamanho da fonte do título */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+  color: #333; /* Cor do texto */
+}
+
+h2 {
+  text-align: center; /* Centraliza os subtítulos */
+  font-weight: bold; /* Coloca em negrito */
+  font-size: 1.5em; /* Aumenta o tamanho da fonte dos subtítulos */
+  margin: 20px 0; /* Espaço acima e abaixo dos subtítulos */
+}
+
+form {
+  display: flex; /* Usar flexbox para o layout do formulário */
+  justify-content: space-between; /* Espaça os elementos dentro do formulário */
+  margin-bottom: 20px; /* Espaço abaixo do formulário */
+}
+
+input[type="text"] {
+  flex: 1; /* Permite que o campo de entrada ocupe o espaço disponível */
+  padding: 10px; /* Espaçamento interno do campo de entrada */
+  margin-right: 10px; /* Espaço à direita do campo de entrada */
+  border-radius: 5px; /* Bordas arredondadas */
+  border: 1px solid #ccc; /* Borda do campo de entrada */
+  transition: border-color 0.3s; /* Transição suave para a cor da borda */
+}
+
+input[type="text"]:focus {
+  border-color: #5cb85c; /* Cor da borda ao focar no campo */
+  outline: none; /* Remove o contorno padrão */
+}
+
+button {
+  padding: 10px 20px; /* Espaçamento interno do botão */
+  border-radius: 5px; /* Bordas arredondadas */
+  background-color: #5cb85c; /* Cor de fundo do botão */
+  color: white; /* Cor do texto do botão */
+  border: none; /* Remove a borda padrão */
+  cursor: pointer; /* Muda o cursor ao passar o mouse */
+  transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+}
+
+button:hover {
+  background-color: #4cae4c; /* Cor de fundo ao passar o mouse */
+}
+
+ul {
+  list-style: none; /* Remove os marcadores da lista */
+  padding: 0; /* Remove o preenchimento padrão */
+}
+
+li {
+  display: flex; /* Usar flexbox para o layout dos itens */
+  justify-content: space-between; /* Espaça os elementos dentro da lista */
+  padding: 10px; /* Espaçamento interno dos itens */
+  border-bottom: 1px solid #ddd; /* Borda abaixo de cada item */
+}
+
+.purchased {
+  text-decoration: line-through; /* Risca o texto de itens comprados */
+  color: gray; /* Cor do texto riscado */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .shopping-list-container {
+    padding: 10px; /* Reduz o espaçamento interno em telas menores */
+  }
+
+  h1 {
+    font-size: 2.5em; /* Reduz o tamanho da fonte do título em telas menores */
+  }
+
+  h2 {
+    font-size: 1.2em; /* Reduz o tamanho da fonte dos subtítulos em telas menores */
+  }
+
+  input[type="text"] {
+    margin-right: 5px; /* Reduz o espaço à direita do campo de entrada em telas menores */
+  }
+
+  button {
+    padding: 8px 16px; /* Reduz o espaçamento interno do botão em telas menores */
+  }
+}
