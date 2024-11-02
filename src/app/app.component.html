@@ -1,2 +1,10 @@
-<app-shopping-list></app-shopping-list>
+<!-- src/app/app.component.html -->
 
+<div *ngIf="!isLoggedIn(); else loggedIn">
+  <button (click)="login()">Login</button>
+</div>
+
+<ng-template #loggedIn>
+  <p>Bem-vindo, {{ authService.userProfile?.['name'] || 'Usuário' }}!</p>
+  <button (click)="logout()">Logout</button>
+</ng-template>

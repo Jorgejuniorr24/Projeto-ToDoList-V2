@@ -1,36 +1,28 @@
-import { CommonModule } from '@angular/common';
+// src/app/app.component.ts
+
 import { Component } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms'; // Certifique-se de importar corretamente
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { AuthService } from './auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    CommonModule,
-    ShoppingListComponent,
-  ],
+  imports: [CommonModule], // Adicionando CommonModule para suportar *ngIf
 })
 export class AppComponent {
-  itemForm: FormGroup;
+  constructor(public authService: AuthService) {}
 
-  constructor() {
-    this.itemForm = new FormGroup({
-      itemName: new FormControl('', [Validators.required]),
-    });
+  login() {
+    this.authService.login();
   }
 
-  onSubmit() {
-    console.log(this.itemForm.value);
+  logout() {
+    this.authService.logout();
+  }
+
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
   }
 }
