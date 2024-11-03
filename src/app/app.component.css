@@ -1,0 +1,53 @@
+:root {
+  --primary-green: rgb(217, 250, 241);
+  --button-green: rgb(49, 186, 142);
+  --button-text-color: #FFFFFF;
+  --text-color: #333;
+}
+
+.app-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--primary-green);
+  text-align: center;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.app-header p {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 40px;
+  font-family: Arial, sans-serif;
+}
+
+.main-button {
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  background-color: rgb(49, 186, 142); /* Definindo o fundo do botão como verde */
+  color: var(--button-text-color); /* Cor do texto do botão */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.main-button:hover {
+  background-color: rgb(49, 186, 142); /* Mantendo a cor verde no hover */
+}
+
+.main-button:active {
+  transform: scale(0.98);
+}
+

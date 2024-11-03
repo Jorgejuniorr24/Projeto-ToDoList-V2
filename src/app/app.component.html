@@ -1,10 +1,9 @@
-<!-- src/app/app.component.html -->
+<header class="app-header">
+  <h1>Bem-vindo ao CompraFácil!</h1>
+  <p>Organize suas compras com facilidade.</p>
 
-<div *ngIf="!isLoggedIn(); else loggedIn">
-  <button (click)="login()">Login</button>
-</div>
+  <button class="main-button" (click)="login()">Entrar</button>
 
-<ng-template #loggedIn>
-  <p>Bem-vindo, {{ authService.userProfile?.['name'] || 'Usuário' }}!</p>
-  <button (click)="logout()">Logout</button>
-</ng-template>
+  <!-- Botão de Logout -->
+  <button *ngIf="isLoggedIn()" class="main-button" (click)="logout()">Logout</button>
+</header>

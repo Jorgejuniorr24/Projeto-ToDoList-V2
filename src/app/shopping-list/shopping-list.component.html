@@ -1,6 +1,7 @@
 <div class="shopping-list-container">
   <h1>Lista de Compras</h1>
 
+  <!-- Formulário de adição/edição de item -->
   <form (ngSubmit)="addItem()" #itemForm="ngForm">
     <input
       type="text"
@@ -17,23 +18,23 @@
   <div class="list">
     <h2>Itens Não Comprados</h2>
     <ul>
-      <ng-container *ngFor="let item of items; let i = index">
+      <ng-container *ngFor="let item of items; let i = index" [ngClass]="{'purchased': item.purchased}">
         <li *ngIf="!item.purchased">
-          <span [class.purchased]="item.purchased">{{ item.name }}</span>
-          <button (click)="markAsPurchased(i)">✔</button>
-          <button (click)="editItem(i)">✏️</button>
-          <button (click)="deleteItem(i)">🗑️</button>
+          <span>{{ item.name }}</span>
+          <button aria-label="Marcar como comprado" (click)="markAsPurchased(i)">✔</button>
+          <button aria-label="Editar item" (click)="editItem(i)">✏️</button>
+          <button aria-label="Deletar item" (click)="deleteItem(i)">🗑️</button>
         </li>
       </ng-container>
     </ul>
 
     <h2>Itens Comprados</h2>
     <ul>
-      <ng-container *ngFor="let item of items; let i = index">
+      <ng-container *ngFor="let item of items; let i = index" [ngClass]="{'purchased': item.purchased}">
         <li *ngIf="item.purchased">
-          <span [class.purchased]="item.purchased">{{ item.name }}</span>
-          <button (click)="editItem(i)">✏️</button>
-          <button (click)="deleteItem(i)">🗑️</button>
+          <span>{{ item.name }}</span>
+          <button aria-label="Editar item" (click)="editItem(i)">✏️</button>
+          <button aria-label="Deletar item" (click)="deleteItem(i)">🗑️</button>
         </li>
       </ng-container>
     </ul>

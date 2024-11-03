@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -15,21 +15,23 @@ export class ShoppingListComponent {
     { name: 'Leite', purchased: true },
   ];
 
-  newItem: string = ''; // Propriedade para armazenar o novo item
-  currentIndex: number | null = null; // Armazena o índice do item a ser editado
+  newItem: string = '';
+  currentIndex: number | null = null;
+  errorMessage: string = '';
 
-  // Método para adicionar ou editar o item
   addItem() {
     if (this.newItem.trim()) {
-      if (this.currentIndex !== null) {
-        // Edita o item existente
-        this.items[this.currentIndex].name = this.newItem;
-        this.currentIndex = null; // Reseta o índice após editar
-      } else {
-        // Adiciona um novo item
-        this.items.push({ name: this.newItem, purchased: false });
+      try {
+        if (this.currentIndex !== null) {
+          this.items[this.currentIndex].name = this.newItem;
+          this.currentIndex = null;
+        } else {
+          this.items.push({ name: this.newItem, purchased: false });
+        }
+        this.newItem = '';
+      } catch (error) {
+        this.errorMessage = 'Erro ao adicionar item. Tente novamente.';
       }
-      this.newItem = ''; // Limpa o campo após adicionar
     }
   }
 
@@ -38,11 +40,15 @@ export class ShoppingListComponent {
   }
 
   editItem(index: number) {
-    this.currentIndex = index; // Armazena o índice do item a ser editado
-    this.newItem = this.items[index].name; // Preenche o campo de entrada com o nome do item
+    this.currentIndex = index;
+    this.newItem = this.items[index].name;
   }
 
   deleteItem(index: number) {
-    this.items.splice(index, 1);
+    try {
+      this.items.splice(index, 1);
+    } catch (error) {
+      this.errorMessage = 'Erro ao deletar item. Tente novamente.';
+    }
   }
 }

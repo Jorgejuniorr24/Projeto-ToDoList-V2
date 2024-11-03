@@ -1,5 +1,3 @@
-// src/app/app.component.ts
-
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 import { CommonModule } from '@angular/common';
@@ -23,6 +21,8 @@ export class AppComponent {
   }
 
   isLoggedIn() {
-    return this.authService.isLoggedIn();
+    const loggedIn = this.authService.isLoggedIn();
+    console.log('Usuário está logado:', loggedIn); // Adicionando log
+    return loggedIn;
   }
 }
