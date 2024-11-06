@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { authConfig } from './auth.config';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private oauthService: OAuthService) {
+  constructor(private oauthService: OAuthService, private router: Router) {
     this.configureOAuth();
   }
 
   private configureOAuth() {
     this.oauthService.configure(authConfig);
     this.oauthService.loadDiscoveryDocumentAndTryLogin().then(() => {
-      console.log('Login process finished. Is logged in:', this.isLoggedIn());
+      if (this.isLoggedIn()) {
+        // Redireciona para a rota do componente shopping-list após login bem-sucedido
+        this.router.navigate(['/shopping-list']);
+      }
     }).catch(error => {
       console.error('Erro ao carregar o documento de descoberta:', error);
     });
@@ -30,7 +34,6 @@ export class AuthService {
 
   logout() {
     try {
-      console.log('Executando logout...'); // Log ao iniciar o logout
       this.oauthService.logOut();
     } catch (error) {
       console.error('Erro ao fazer logout:', error);

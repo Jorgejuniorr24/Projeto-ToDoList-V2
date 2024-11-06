@@ -1,9 +1,8 @@
 import { Routes } from '@angular/router';
-import { AppComponent } from './app.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    component: AppComponent,
-  },
+  { path: '', redirectTo: '/shopping-list', pathMatch: 'full' },
+  { path: 'shopping-list', component: ShoppingListComponent },
+  { path: '**', redirectTo: '/shopping-list', pathMatch: 'full' }
 ];
